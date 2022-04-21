@@ -45,13 +45,13 @@ import pandas as pd
 
 tbl2 = pd.read_csv("tbl2.csv", sep=",", header = None, names=["K1", "c21","c22","c23", "c24", "c25"])
 YEAR = pd.DataFrame(tbl2['c23'].str.split('-', expand=True)[0])
-YEAR.columns = ['YEAR']   #se nombra la columna como year
+YEAR.columns = ['YEAR']   
 tbl2 = tbl2.join(YEAR)  
 
 tbl2.to_sql(
     name="tbl2",
     con=conn,
-    if_exists="replace",  # {‘fail’, ‘replace’, ‘append’}
+    if_exists="replace",  
 )
 
 SELECT
